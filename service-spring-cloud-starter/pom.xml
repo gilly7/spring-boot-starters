@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.shield</groupId>
+    <artifactId>spring-boot-starters</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>org.shield</groupId>
+  <artifactId>service-spring-cloud-starter</artifactId>
+  <version>${project.version}</version>
+  <name>service-spring-cloud-starter</name>
+  <description>微服务通用依赖组件</description>
+  <dependencies>
+    <!-- Spring Web Service -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- Spring Cloud Application Config -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+    </dependency>
+    <!-- SpringCloud 断路器 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    </dependency>
+    <!-- Eureka Client -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <!-- Feign -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <!-- Spring Boot Admin -->
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-client</artifactId>
+    </dependency>
+    <!-- Restful 相关组件 -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>rest-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- Swagger 文档生成 -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>swagger-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- Actuator 监控-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+  </dependencies>
+</project>
