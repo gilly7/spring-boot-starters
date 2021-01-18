@@ -47,3 +47,5 @@ node_modules
 
 ### spring cloud config ###
 data/
+*.versionsBackup
+bin/

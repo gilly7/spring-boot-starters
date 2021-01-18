@@ -67,7 +67,7 @@ lint:
 	@ $(MVN) checkstyle:check & $(MVN) pmd:check
 
 new:
-	@ $(MVN) archetype:generate -DgroupId=com.shield -DartifactId=${module}
+	@ $(MVN) archetype:generate -DgroupId=com.geely.iot -DartifactId=${module}
 
 checkstyle:
 	@ $(MVN) checkstyle:check
@@ -81,6 +81,9 @@ pmd:
 
 package:
 	@ $(MVN) $(MVNFLAGS) package
+
+deploy-staging:
+	@ $(MVN) clean deploy
 
 migrate:
 	@echo migrate database
@@ -119,4 +122,5 @@ help:
 	@ echo "   install ....... 安装依赖"
 	@ echo "   migrate ....... 迁移数据表: make migrate module={module}"
 	@ echo "   mybatis ....... Nybatis 代码生成: make mybatis module={module}"
+	@ echo "   deploy-staging .......... Deploys snapshot to staging"
 	@ echo "   help .......... 打印帮助"
