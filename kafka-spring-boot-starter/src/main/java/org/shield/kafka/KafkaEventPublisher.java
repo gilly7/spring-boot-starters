@@ -5,7 +5,6 @@ import org.shield.mq.MqProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,13 +22,11 @@ public class KafkaEventPublisher implements EventPublisher {
     @Value("${spring.kafka.template.default-topic}")
     private String defaultTopic;
 
-    @Async
     @Override
     public void publish(Object event) {
         mqProducer.send(defaultTopic, event);
     }
 
-    @Async
     @Override
     public void publish(String topic, Object event) {
         mqProducer.send(topic, event);
