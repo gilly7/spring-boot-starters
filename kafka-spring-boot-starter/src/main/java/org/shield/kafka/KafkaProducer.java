@@ -18,7 +18,7 @@ public class KafkaProducer implements MqProducer {
     private static final Logger logger = LoggerFactory.getLogger(KafkaProducer.class);
 
     @Autowired
-    private KafkaTemplate<Object, Object> template;
+    private KafkaTemplate<String, Object> template;
 
     @Override
     public void send(String topic, Object message) {
