@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -30,10 +32,25 @@ public class KafkaAutoConfiguration {
     }
 
     @Bean
+    public ConsumerFactory<String, Object> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+    }
+    @Bean
+    public ConsumerFactory<Object, Object> consumersFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+    }
+
+    @Bean
     public Map<String, Object> producerConfigs() {
-        Map<String, Object> props = new HashMap<>(kafkaProperties.buildProducerProperties());
-        props.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
-        return props;
+        Map<String, Object> configs = new HashMap<>(kafkaProperties.buildProducerProperties());
+        configs.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
+        return configs;
+    }
+
+    private Map<String, Object> consumerConfigs() {
+        Map<String, Object> configs = new HashMap<>(kafkaProperties.buildConsumerProperties());
+        configs.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
+        return configs;
     }
 
     @Bean
