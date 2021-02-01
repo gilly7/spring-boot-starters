@@ -26,15 +26,17 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
     private String sn;
     private String snVal;
     private Object object;
+    private boolean exceptDeleted;
 
     @Resource
     UniqueMapper mapper;
 
     @Override
     public void initialize(Unique validator) {
-        this.field = validator.field();
-        this.table = validator.table();
-        this.sn = validator.sn();
+        field = validator.field();
+        table = validator.table();
+        sn = validator.sn();
+        exceptDeleted = validator.exceptDeleted();
     }
 
     @Override
@@ -76,9 +78,12 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
 
     private boolean valid() {
         if (sn.isEmpty() || snVal == null || snVal.isEmpty()) {
-            return !mapper.exists(table, field, fieldValue);
+            return exceptDeleted ? !mapper.existsExceptDeleted(table, field, fieldValue)
+                    : !mapper.exists(table, field, fieldValue);
         }
-        List<String> sns = mapper.findByField(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn));
+        List<String> sns = exceptDeleted
+                ? mapper.findByFieldExceptDeleted(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn))
+                : mapper.findByField(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn));
         if (sns.isEmpty()) {
             return true;
         }

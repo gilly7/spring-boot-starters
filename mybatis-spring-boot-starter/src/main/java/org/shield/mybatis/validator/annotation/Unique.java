@@ -50,6 +50,11 @@ public @interface Unique {
 
     String message() default "字段内容重复";
 
+    /**
+     * 排查软删除的数据
+     */
+    boolean exceptDeleted() default false;
+
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
