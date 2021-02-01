@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.shield</groupId>
+    <artifactId>spring-boot-starters</artifactId>
+    <version>1.1.0</version>
+  </parent>
+  <groupId>org.shield</groupId>
+  <artifactId>app-spring-boot-starter</artifactId>
+  <version>1.1.0</version>
+  <name>app-spring-boot-starter</name>
+  <dependencies>
+    <!-- Spring Web Service -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>service-spring-cloud-starter</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-config</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>de.codecentric</groupId>
+          <artifactId>spring-boot-admin-starter-client</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>

@@ -4,6 +4,8 @@ import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.Set;
+
+import org.shield.service.annotation.EmptyShouldBeNull;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;
 import org.springframework.util.ObjectUtils;
@@ -27,13 +29,28 @@ public class HeaderDecoderConverter implements GenericConverter {
     @Override
     public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
         if (ObjectUtils.isEmpty(source)) {
-            return source;
+            return emptyShouldBeNull(source, targetType) ? null : source;
         }
 
         if (!shouldDecode(source, targetType)) {
             return source;
         }
         return convert(source.toString());
+    }
+
+    /**
+     * 空字符串转为 null
+     *
+     * @param source
+     * @param targetType
+     * @return
+     */
+    private boolean emptyShouldBeNull(Object source, TypeDescriptor targetType) {
+        EmptyShouldBeNull annotation = targetType.getAnnotation(EmptyShouldBeNull.class);
+        if (annotation == null) {
+            return false;
+        }
+        return true;
     }
 
     /**
