@@ -68,7 +68,7 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
                     fieldValue = f.get(object).toString();
                 }
                 if (f.getName().equals(sn)) {
-                    snVal = f.get(object).toString();
+                    snVal = f.get(object) == null ? null : f.get(object).toString();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
