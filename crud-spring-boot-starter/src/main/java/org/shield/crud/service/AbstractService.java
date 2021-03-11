@@ -102,7 +102,7 @@ public abstract class AbstractService<T> implements Service<T> {
      * 将 DAO 类转成逻辑编号字段
      */
     private String getLogicId() {
-        Field[] fields = modelClass.getClass().getDeclaredFields();
+        Field[] fields = modelClass.getDeclaredFields();
         for (Field field : fields) {
             if (field.isAnnotationPresent(LogicId.class)) {
                 return field.getName();
