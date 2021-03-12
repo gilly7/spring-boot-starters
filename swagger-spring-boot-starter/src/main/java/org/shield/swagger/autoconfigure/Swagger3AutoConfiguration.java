@@ -31,7 +31,7 @@ public class Swagger3AutoConfiguration {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.OAS_30).apiInfo(apiInfo()).select()
+        return new Docket(DocumentationType.OAS_30).apiInfo(apiInfo()).directModelSubstitute(Byte.class, Integer.class).select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)).paths(PathSelectors.any())
                 .build().globalRequestParameters(globalRequestParameters());
     }
