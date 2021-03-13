@@ -36,6 +36,13 @@ public @interface EnableUnique {
      */
     String sn() default "";
 
+    /**
+     * 附加条件
+     *
+     * @return
+     */
+    String affixCondition() default "";
+
     String message() default "";
 
     Class<?>[] groups() default {};

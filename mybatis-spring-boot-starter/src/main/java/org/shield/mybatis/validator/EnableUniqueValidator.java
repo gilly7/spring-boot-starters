@@ -25,6 +25,7 @@ public class EnableUniqueValidator implements ConstraintValidator<EnableUnique, 
     private String sn;
     private String message;
     private Object object;
+    private String affixCondition;
     private ConstraintValidatorContext context;
 
     @Resource
@@ -35,6 +36,7 @@ public class EnableUniqueValidator implements ConstraintValidator<EnableUnique, 
         this.table = validator.table();
         this.sn = validator.sn();
         this.message = validator.message();
+        this.affixCondition = validator.affixCondition();
     }
 
     @Override
@@ -74,11 +76,12 @@ public class EnableUniqueValidator implements ConstraintValidator<EnableUnique, 
                     }
 
                     if (sn.isEmpty() || snVal == null || snVal.isEmpty()) {
-                        if (mapper.exists(table, field, fieldValue)) {
+                        if (mapper.exists(table, field, fieldValue, affixCondition)) {
                             return failValidate(message);
                         }
                     }
-                    List<String> sns = mapper.findByField(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn));
+                    List<String> sns = mapper.findByField(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn),
+                            affixCondition);
                     if (sns.isEmpty()) {
                         continue;
                     }

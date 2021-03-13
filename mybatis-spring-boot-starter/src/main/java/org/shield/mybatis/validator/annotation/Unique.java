@@ -37,9 +37,21 @@ public @interface Unique {
     String table();
 
     /**
+     * 表字段
+     */
+    String tableField() default "";
+
+    /**
      * 字段
      */
     String field();
+
+    /**
+     * 附加条件
+     *
+     * @return
+     */
+    String affixCondition() default "";
 
     /**
      * 更新时使用的编号
@@ -47,6 +59,13 @@ public @interface Unique {
      * @return
      */
     String sn() default "";
+
+    /**
+     * 更新时使用的编号表字段
+     *
+     * @return
+     */
+    String tableSn() default "";
 
     String message() default "字段内容重复";
 

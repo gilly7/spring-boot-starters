@@ -22,11 +22,14 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
 
     private String table;
     private String field;
+    private String tableField;
+    private String tableSn;
     private String fieldValue;
     private String sn;
     private String snVal;
     private Object object;
     private boolean exceptDeleted;
+    private String affixCondition;
 
     @Resource
     UniqueMapper mapper;
@@ -34,9 +37,18 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
     @Override
     public void initialize(Unique validator) {
         field = validator.field();
-        table = validator.table();
+        tableField = validator.tableField();
+        if (tableField.isEmpty()) {
+            tableField = field;
+        }
         sn = validator.sn();
+        tableSn = validator.tableSn();
+        if (tableSn.isEmpty()) {
+            tableSn = sn;
+        }
+        table = validator.table();
         exceptDeleted = validator.exceptDeleted();
+        affixCondition = validator.affixCondition();
     }
 
     @Override
@@ -78,12 +90,13 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
 
     private boolean valid() {
         if (sn.isEmpty() || snVal == null || snVal.isEmpty()) {
-            return exceptDeleted ? !mapper.existsExceptDeleted(table, field, fieldValue)
-                    : !mapper.exists(table, field, fieldValue);
+            return exceptDeleted ? !mapper.existsExceptDeleted(table, StringUtil.camelhumpToUnderline(tableField), fieldValue, affixCondition)
+                    : !mapper.exists(table, StringUtil.camelhumpToUnderline(tableField), fieldValue, affixCondition);
         }
         List<String> sns = exceptDeleted
-                ? mapper.findByFieldExceptDeleted(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn))
-                : mapper.findByField(table, field, fieldValue, StringUtil.camelhumpToUnderline(sn));
+                ? mapper.findByFieldExceptDeleted(table, StringUtil.camelhumpToUnderline(tableField), fieldValue, StringUtil.camelhumpToUnderline(tableSn),
+                        affixCondition)
+                : mapper.findByField(table, StringUtil.camelhumpToUnderline(tableField), fieldValue, StringUtil.camelhumpToUnderline(tableSn), affixCondition);
         if (sns.isEmpty()) {
             return true;
         }
