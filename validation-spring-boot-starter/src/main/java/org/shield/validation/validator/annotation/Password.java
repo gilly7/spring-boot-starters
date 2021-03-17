@@ -33,4 +33,9 @@ public @interface Password {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    /**
+     * MD5格式
+     */
+    final static String REGEXP_MD5 = "^([a-f\\d]{32}|[A-F\\d]{32})$";
 }
