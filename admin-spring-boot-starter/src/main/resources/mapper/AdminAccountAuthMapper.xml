@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shield.admin.mapper.AdminAccountAuthMapper">
+  <resultMap id="BaseResultMap" type="org.shield.admin.model.AdminAccountAuth">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="CHAR" property="accountId" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="source_id" jdbcType="VARCHAR" property="sourceId" />
+    <result column="source_token" jdbcType="VARCHAR" property="sourceToken" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

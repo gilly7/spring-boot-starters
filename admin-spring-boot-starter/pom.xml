@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.shield</groupId>
+    <artifactId>spring-boot-starters</artifactId>
+    <version>1.7.0</version>
+  </parent>
+  <groupId>org.shield</groupId>
+  <artifactId>admin-spring-boot-starter</artifactId>
+  <version>1.7.0</version>
+  <name>通用系统管理模块</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <!-- 验证码组件 -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>captcha-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- Crud常用组件 -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>crud-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- Spring Cloud Application Service -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>service-spring-cloud-starter</artifactId>
+    </dependency>
+    <!-- Spring Security JWT -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>security-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- Validation 通用组件 -->
+    <dependency>
+      <groupId>org.shield</groupId>
+      <artifactId>validation-spring-boot-starter</artifactId>
+    </dependency>
+  </dependencies>
+</project>
