@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.shield</groupId>
     <artifactId>spring-boot-starters</artifactId>
-    <version>1.7.0</version>
+    <version>1.7.1</version>
   </parent>
   <groupId>org.shield</groupId>
   <artifactId>admin-spring-boot-starter</artifactId>
-  <version>1.7.0</version>
+  <version>1.7.1</version>
   <name>通用系统管理模块</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,6 +28,38 @@
     <dependency>
       <groupId>org.shield</groupId>
       <artifactId>service-spring-cloud-starter</artifactId>
+      <exclusions>
+        <!-- Spring Cloud Application Config -->
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-config</artifactId>
+        </exclusion>
+        <!-- SpringCloud 断路器 -->
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </exclusion>
+        <!-- Eureka Client -->
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </exclusion>
+        <!-- Feign -->
+        <exclusion>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </exclusion>
+        <!-- Spring Boot Admin -->
+        <exclusion>
+          <groupId>de.codecentric</groupId>
+          <artifactId>spring-boot-admin-starter-client</artifactId>
+        </exclusion>
+        <!-- Actuator 监控-->
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-actuator</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- Spring Security JWT -->
     <dependency>
