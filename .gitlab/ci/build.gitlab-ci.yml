@@ -8,5 +8,5 @@
     - MODULE_PATH=${MODULE_PATH:-.}
     - mvn -am package -T 1C -B -Dmaven.test.skip=true -Dmaven.compile.fork=true
 
-build-iot-admin:
+build:
   <<: *build

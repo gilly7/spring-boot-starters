@@ -15,5 +15,5 @@ checkstyle:
 pmd:
   extends: .lint
   script:
-    - mvn install -Dcheckstyle.skip -Dpmd.skip -s .mvn/local-settings.xml
+    - mvn install -Dcheckstyle.skip -Dpmd.skip
     - mvn pmd:check
