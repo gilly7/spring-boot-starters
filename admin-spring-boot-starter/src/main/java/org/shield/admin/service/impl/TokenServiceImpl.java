@@ -16,7 +16,6 @@ import org.shield.security.utils.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.hutool.crypto.digest.DigestUtil;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author zacksleo@gmail.com
