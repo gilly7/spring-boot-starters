@@ -1,0 +1,24 @@
+.lint:
+  image: $MAVEN_IMG
+  before_script: []
+  stage: build
+  dependencies: []
+  except:
+    - tags
+  allow_failure: true
+  only:
+    refs:
+      - branches
+    changes:
+      - "**/*.java"
+
+# 依赖安装
+checkstyle:
+  extends: .lint
+  script:
+    - mvn checkstyle:check
+pmd:
+  extends: .lint
+  script:
+    - mvn install -Dcheckstyle.skip -Dpmd.skip -s .mvn/local-settings.xml
+    - mvn pmd:check

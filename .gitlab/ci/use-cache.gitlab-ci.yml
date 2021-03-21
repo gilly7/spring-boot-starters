@@ -1,0 +1,6 @@
+.use-cache:
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - /cache/.m2/repository

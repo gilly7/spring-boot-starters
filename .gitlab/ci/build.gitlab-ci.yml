@@ -1,0 +1,12 @@
+# 构建编译
+.build: &build
+  image: $MAVEN_IMG
+  before_script: []
+  stage: build
+  dependencies: []
+  script:
+    - MODULE_PATH=${MODULE_PATH:-.}
+    - mvn -am package -T 1C -B -Dmaven.test.skip=true -Dmaven.compile.fork=true
+
+build-iot-admin:
+  <<: *build
