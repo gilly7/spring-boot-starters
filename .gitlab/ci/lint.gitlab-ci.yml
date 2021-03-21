@@ -6,11 +6,6 @@
   except:
     - tags
   allow_failure: true
-  only:
-    refs:
-      - branches
-    changes:
-      - "**/*.java"
 
 # 依赖安装
 checkstyle:
