@@ -2,6 +2,7 @@ package org.shield.admin.form;
 
 import javax.validation.constraints.NotBlank;
 import org.shield.validation.validator.annotation.FieldsValueMatch;
+import org.shield.validation.validator.annotation.Password;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,5 +28,6 @@ public class PasswordChangeForm {
      */
     @ApiModelProperty("密码")
     @NotBlank(message = "请输入密码")
+    @Password
     private String newPassword;
 }

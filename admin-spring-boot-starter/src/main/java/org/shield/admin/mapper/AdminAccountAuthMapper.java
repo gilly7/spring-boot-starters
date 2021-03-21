@@ -21,4 +21,7 @@ public interface AdminAccountAuthMapper extends Mapper<AdminAccountAuth> {
      */
     @Select("SELECT * FROM admin_account_auth WHERE `source` = #{source} AND `source_id` = #{sourceId} AND is_active=1 AND is_deleted=0 limit 1")
     AdminAccountAuth findAuth(@Param("source") Integer source, @Param("sourceId") String sourceId);
+
+    @Select("SELECT * FROM admin_account_auth WHERE `source` = #{source} AND `account_id` = #{accountId} AND is_active=1 AND is_deleted=0 limit 1")
+    AdminAccountAuth findByIdAndSource(@Param("source") Integer source, @Param("accountId") String accountId);
 }

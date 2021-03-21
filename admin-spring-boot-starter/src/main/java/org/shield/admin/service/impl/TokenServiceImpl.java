@@ -12,7 +12,6 @@ import org.shield.admin.vo.TokenVo;
 import org.shield.rest.exception.BadRequestException;
 import org.shield.rest.exception.NotFoundException;
 import org.shield.security.user.User;
-import org.shield.security.user.impl.AdminUser;
 import org.shield.security.utils.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
  * @author zacksleo@gmail.com
  */
 @Service
-@Slf4j
 public class TokenServiceImpl implements TokenService<PasswordLoginForm> {
 
     @Autowired
@@ -50,8 +48,6 @@ public class TokenServiceImpl implements TokenService<PasswordLoginForm> {
         if (!admin.getIsActive()) {
             throw new BadRequestException("该用户已停用");
         }
-        log.info("sourceToken={}", auth);
-        log.info("sourceToken={}", auth.getSourceToken());
         if (!DigestUtil.bcryptCheck(form.getPassword(), auth.getSourceToken())) {
             throw new BadRequestException("用户名或密码错误");
         }
