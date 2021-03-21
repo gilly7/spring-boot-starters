@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import com.pig4cloud.plugin.oss.OssProperties;
 import com.pig4cloud.plugin.oss.service.OssTemplate;
+
 /**
  * @author zacksleo@gmail.com
  */
@@ -32,7 +33,7 @@ public class StorageAutoConfiguration {
         return new LocalFileServiceImpl();
     }
 
-    @ConditionalOnProperty(name = "oss.driver", havingValue = "oss")
+    @ConditionalOnProperty(name = "oss.driver", havingValue = "oss", matchIfMissing = true)
     @Bean
     public FileService jobB() {
         return new OssFileServiceImpl(template, ossProperties);
