@@ -3,6 +3,7 @@ package org.shield.admin.repository;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.shield.admin.enums.AccountAuthSource;
@@ -68,6 +69,9 @@ public class AccountAuthRepository {
      * @return
      */
     public List<AdminAccountAuth> findAuthsByAccounts(Set<String> accounts) {
+        if(accounts.isEmpty()){
+            return new ArrayList<AdminAccountAuth>();
+        }
         Condition condition = new Condition(AdminAccountAuth.class);
         Criteria criteria = condition.createCriteria();
         criteria.andIn("accountId", accounts);
