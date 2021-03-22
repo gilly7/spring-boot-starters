@@ -39,7 +39,7 @@ public class PasswordServiceImpl implements PasswordService {
             throw new BadRequestException("该用户已停用");
         }
         if (!DigestUtil.bcryptCheck(form.getOldPassword(), auth.getSourceToken())) {
-            throw new BadRequestException("用户名或密码错误");
+            throw new BadRequestException("原密码错误");
         }
         auth.setSourceToken(DigestUtil.bcrypt(form.getNewPassword()));
         mapper.updateByPrimaryKeySelective(auth);
