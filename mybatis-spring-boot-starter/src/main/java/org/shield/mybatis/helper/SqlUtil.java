@@ -11,6 +11,9 @@ import tk.mybatis.mapper.mapperhelper.EntityHelper;
  */
 public class SqlUtil {
 
+    private SqlUtil() {
+    }
+
     /**
      * 获取逻辑主键注解的列
      *
@@ -32,7 +35,7 @@ public class SqlUtil {
             }
         }
         if (!hasLogicId) {
-            return null;
+            throw new MapperException(entityClass.getCanonicalName() + " 缺少 @LogicId 注解的字段!");
         }
         return logicIdColumn;
     }

@@ -6,7 +6,6 @@ import tk.mybatis.mapper.entity.EntityColumn;
 import tk.mybatis.mapper.mapperhelper.MapperHelper;
 import tk.mybatis.mapper.mapperhelper.MapperTemplate;
 import tk.mybatis.mapper.mapperhelper.SqlHelper;
-import tk.mybatis.mapper.MapperException;
 
 /**
  * @author zacksleo <zacksleo@gmail.com>
@@ -93,10 +92,6 @@ public class CrudProvider extends MapperTemplate {
      */
     private void appendWhereLogicId(StringBuilder sql, Class<?> entityClass) {
         EntityColumn column = SqlUtil.getLogicIdColumn(entityClass);
-        if (column == null) {
-            // throw new MapperException(entityClass.getCanonicalName() + " 缺少 @LogicId 注解的字段!");
-            return;
-        }
         sql.append("<where>");
         sql.append(column.getColumn());
         sql.append(" = ");
