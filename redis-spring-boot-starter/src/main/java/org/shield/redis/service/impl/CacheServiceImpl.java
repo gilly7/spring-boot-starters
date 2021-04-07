@@ -56,13 +56,14 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public void put(String key, List<Object> list) {
+    public <T> void put(String key, List<T> list) {
         redisTemplate.opsForList().rightPush(key, list);
     }
 
     @Override
-    public List<Object> get(String key, long start, long end) {
-        return redisTemplate.opsForList().range(key, start, end);
+    @SuppressWarnings("unchecked")
+    public <T> List<T> get(String key, long start, long end) {
+        return (List<T>) redisTemplate.opsForList().range(key, start, end);
     }
 
     @Override

@@ -67,7 +67,7 @@ public interface CacheService {
      * @param key
      * @param list
      */
-    void put(String key, List<Object> list);
+    <T> void put(String key, List<T> list);
 
     /**
      * get list by range
@@ -77,7 +77,7 @@ public interface CacheService {
      * @param end
      * @return
      */
-    List<Object> get(String key, long start, long end);
+    <T> List<T> get(String key, long start, long end);
 
     /**
      * remove by key
