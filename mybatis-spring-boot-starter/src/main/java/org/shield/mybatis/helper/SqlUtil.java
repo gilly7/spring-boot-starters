@@ -5,12 +5,11 @@ import org.shield.mybatis.plugin.LogicId;
 import tk.mybatis.mapper.MapperException;
 import tk.mybatis.mapper.entity.EntityColumn;
 import tk.mybatis.mapper.mapperhelper.EntityHelper;
-import tk.mybatis.mapper.mapperhelper.SqlHelper;
 
 /**
  * @author zacksleo <zacksleo@gmail.com>
  */
-public class SqlUtil extends SqlHelper {
+public class SqlUtil {
 
     /**
      * 获取逻辑主键注解的列
@@ -33,7 +32,7 @@ public class SqlUtil extends SqlHelper {
             }
         }
         if (!hasLogicId) {
-            throw new MapperException(entityClass.getCanonicalName() + " 缺少 @LogicId 注解的字段!");
+            return null;
         }
         return logicIdColumn;
     }

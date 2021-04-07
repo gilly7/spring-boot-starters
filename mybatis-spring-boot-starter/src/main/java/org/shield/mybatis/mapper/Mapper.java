@@ -1,6 +1,5 @@
 package org.shield.mybatis.mapper;
 
-import org.shield.mybatis.mappers.crud.CrudMapper;
 import tk.mybatis.mapper.common.BaseMapper;
 import tk.mybatis.mapper.common.ConditionMapper;
 import tk.mybatis.mapper.common.ExampleMapper;

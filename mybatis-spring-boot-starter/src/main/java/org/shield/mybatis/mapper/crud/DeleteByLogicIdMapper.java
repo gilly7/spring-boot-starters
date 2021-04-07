@@ -1,4 +1,4 @@
-package org.shield.mybatis.mappers.crud;
+package org.shield.mybatis.mapper.crud;
 
 import tk.mybatis.mapper.annotation.RegisterMapper;
 import org.apache.ibatis.annotations.DeleteProvider;
