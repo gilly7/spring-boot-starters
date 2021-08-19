@@ -105,6 +105,10 @@ run:
 	@echo run application
 	@ $(MVN) -pl $(module) spring-boot:run -Dspring-boot.run.profiles=$(profile)
 
+version:
+	@echo new version
+	@ $(MVN) versions:set -DnewVersion=$(version)
+
 help:
 	@ echo "Usage   :  make <target>"
 	@ echo "Targets :"
@@ -122,5 +126,6 @@ help:
 	@ echo "   install ....... 安装依赖"
 	@ echo "   migrate ....... 迁移数据表: make migrate module={module}"
 	@ echo "   mybatis ....... Nybatis 代码生成: make mybatis module={module}"
-	@ echo "   deploy-staging .......... Deploys snapshot to staging"
+	@ echo "   deploy-staging .Deploys snapshot to staging"
+	@ echo "   version ........设置新版本"
 	@ echo "   help .......... 打印帮助"
