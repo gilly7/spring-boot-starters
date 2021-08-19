@@ -12,7 +12,7 @@ import lombok.Data;
  * @author zacksleo@gmail.com
  */
 @Data
-@ApiModel("")
+@ApiModel
 @Table(name = "`role_permission`")
 public class RolePermission implements Serializable {
 

@@ -21,7 +21,7 @@ import lombok.Data;
 /**
  * @author zacksleo@gmail.com
  */
-@ApiModel("管理员")
+@ApiModel
 @Data
 @Unique(table = "admin", field = "name", message = "姓名已存在", sn = "accountId", tableSn = "adminId",
         exceptDeleted = true, groups = {OnCreate.class, OnUpdate.class})
