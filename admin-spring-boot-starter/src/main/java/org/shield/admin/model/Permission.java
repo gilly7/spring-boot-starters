@@ -18,7 +18,7 @@ import tk.mybatis.mapper.annotation.LogicDelete;
  * @author zacksleo@gmail.com
  */
 @Data
-@ApiModel("")
+@ApiModel
 @Table(name = "`permission`")
 public class Permission implements Serializable {
 
