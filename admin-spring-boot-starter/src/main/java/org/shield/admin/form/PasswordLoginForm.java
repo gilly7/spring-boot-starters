@@ -30,7 +30,7 @@ public class PasswordLoginForm {
     /**
      * 验证码
      */
-    @ApiModelProperty("验证码")
+    @ApiModelProperty(value = "验证码, 需拼接验证码接口获得的key", example = "e8f45b067f3f448fb489dbebabba7304:n1q7")
     @NotBlank(message = "请输入验证码")
     @ValidCaptcha
     private String verifyCode;
