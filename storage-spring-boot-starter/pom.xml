@@ -21,6 +21,10 @@
     </dependency>
     <dependency>
       <groupId>org.shield</groupId>
+      <artifactId>rest-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.shield</groupId>
       <artifactId>swagger-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
