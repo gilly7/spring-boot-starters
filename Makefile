@@ -44,6 +44,9 @@ endif
 all:
 	@ $(MVN) $(MVNFLAGS) package
 
+build:
+	@ $(MVN) $(MVNFLAGS) package -Dcheckstyle.skip -Dpmd.skip -T 1C -B -Dmaven.compile.fork=true -Dmaven.test.skip=true
+
 clean:
 	@ $(MVN) $(MVNFLAGS) clean
 
@@ -61,7 +64,7 @@ test:
 	@ $(MVN) $(MVNFLAGS) test
 
 install:
-	@ $(MVN) clean install -Dcheckstyle.skip -Dpmd.skip -T 1C -B -Dmaven.compile.fork=true
+	@ $(MVN) clean install -Dcheckstyle.skip -Dpmd.skip -T 1C -B -Dmaven.compile.fork=true -Dmaven.test.skip=true
 
 lint:
 	@ $(MVN) checkstyle:check & $(MVN) pmd:check
@@ -113,6 +116,7 @@ help:
 	@ echo "Usage   :  make <target>"
 	@ echo "Targets :"
 	@ echo "   all ........... 构建所有项目"
+	@ echo "   build ........... 构建所有项目"
 	@ echo "   clean ......... 清理"
 	@ echo "   command ....... 进入命令行操作"
 	@ echo "   compile ....... 编译"
