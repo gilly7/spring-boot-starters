@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,7 @@ public class FileController {
     @ResponseStatus(value = HttpStatus.CREATED)
     @ApiImplicitParams({@ApiImplicitParam(name = "directory", value = "文件夹名称", dataType = "String", paramType = "path",
             required = true)})
+    @ApiResponses({@ApiResponse(code = 413, message = "文件大小超过限制")})
     public FileVo upload(@PathVariable("directory") String directory,
             @RequestPart(required = true) @RequestParam("file") MultipartFile file, HttpServletRequest request)
             throws Exception {
