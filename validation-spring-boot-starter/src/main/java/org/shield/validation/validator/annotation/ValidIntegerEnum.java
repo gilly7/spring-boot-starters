@@ -22,6 +22,11 @@ public @interface ValidIntegerEnum {
     String message() default "字段取值不合法";
 
     /**
+     * 默认必填
+     */
+    boolean optional() default false;
+
+    /**
      * 显示允许的值
      * @return
      */

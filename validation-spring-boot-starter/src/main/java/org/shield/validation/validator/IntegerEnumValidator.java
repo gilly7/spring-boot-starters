@@ -21,6 +21,8 @@ public class IntegerEnumValidator implements ConstraintValidator<ValidIntegerEnu
 
     private boolean showAllowValues;
 
+    private boolean optional;
+
     @Override
     public void initialize(ValidIntegerEnum validEnum) {
 
@@ -33,12 +35,13 @@ public class IntegerEnumValidator implements ConstraintValidator<ValidIntegerEnu
             values.add(((IntegerEnum) object).value());
         }
         showAllowValues = validEnum.showAllowValues();
+        optional = validEnum.optional();
     }
 
     @Override
     public boolean isValid(Integer value, ConstraintValidatorContext context) {
         if (value == null) {
-            return false;
+            return optional;
         }
         if (values.contains(value)) {
             return true;
