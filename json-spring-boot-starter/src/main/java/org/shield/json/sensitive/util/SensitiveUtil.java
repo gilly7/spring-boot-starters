@@ -5,11 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 脱敏处理类
  *
- * @author zhanghao
- * @date 2019/06/04
  */
 public class SensitiveUtil {
-
 
     public final static String COMMON = "******";
     private final static String CLASSIFIED = "保密";
@@ -63,14 +60,28 @@ public class SensitiveUtil {
     }
 
     /**
-     * 姓名
+     * 用户名
      */
-    public static String chineseName(String chineseName) {
-        if (StringUtils.isEmpty(chineseName)) {
+    public static String userName(String userName) {
+        if (StringUtils.isEmpty(userName)) {
             return "";
         }
 
-        return StringUtils.left(chineseName, 2).concat(StringUtils.removeStart(
-                StringUtils.leftPad(StringUtils.right(chineseName, 4), StringUtils.length(chineseName), "*"), "***"));
+        return StringUtils.left(userName, 2).concat(StringUtils.removeStart(
+                StringUtils.leftPad(StringUtils.right(userName, 4), StringUtils.length(userName), "*"), "***"));
+    }
+
+    /**
+     * 【中文姓名】只显示第一个汉字，其他隐藏为2个星号，比如：李**
+     *
+     * @param fullName
+     * @return
+     */
+    public static String chineseName(String fullName) {
+        if (StringUtils.isBlank(fullName)) {
+            return "";
+        }
+        String name = StringUtils.left(fullName, 1);
+        return StringUtils.rightPad(name, StringUtils.length(fullName), "*");
     }
 }
